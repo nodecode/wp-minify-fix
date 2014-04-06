@@ -3,15 +3,17 @@ Tags: minify, js, css, html, javascript, cascading style sheets, optimize, perfo
 Contributors: NodeCode, madeinthayaland
 Requires at least: 2.7
 Tested up to: 3.8.1
-Stable Tag: 1.2.0
+Stable Tag: 1.3.0
 
-This plugin uses the Minify engine to combine and compress JS and CSS files
+[Fixed] This plugin uses the Minify engine to combine and compress JS and CSS files
 to improve page load time.
 
 == Description ==
 This plugin integrates the [Minify engine](http://code.google.com/p/minify/)
 into your WordPress blog.  Once enabled, this plugin will combine and compress
 JS and CSS files to improve page load time.
+
+This plugin is a fork of [WP Minify](http://wordpress.org/plugins/wp-minify/) to fix bugs, because it has not been updated since 2012-6-4.
 
 = How Does it Work? =
 

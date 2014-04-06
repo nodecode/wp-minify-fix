@@ -2,15 +2,15 @@
 /*
 Plugin Name: WP Minify Fix
 Plugin URI: http://omninoggin.com/wordpress-plugins/wp-minify-wordpress-plugin/
-Description: This plugin uses the Minify engine to combine and compress JS and CSS files to improve page load time.
+Description: [Fixed] This plugin uses the Minify engine to combine and compress JS and CSS files to improve page load time.
 Version: 1.3
 Author: NodeCode
 Author URI: http://nodecode.de
 */
 
 /*
-Copyright 2013 NodeCode
-Copyright 2009-2011 Thaya Kareeson (email : thaya.kareeson@gmail.com)
+Copyright 2013 NodeCode (email: info@nodecode.de)
+Copyright 2009-2011 Thaya Kareeson (email: thaya.kareeson@gmail.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
