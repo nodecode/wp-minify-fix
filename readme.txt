@@ -2,7 +2,7 @@
 Tags: minify, js, css, html, javascript, cascading style sheets, optimize, performance, speed, http request, phpspeedy, fix, compress, performance
 Contributors: NodeCode, madeinthayaland
 Requires at least: 2.7
-Tested up to: 3.3.2
+Tested up to: 3.8.1
 Stable Tag: 1.2.0
 
 This plugin uses the Minify engine to combine and compress JS and CSS files
