@@ -4,8 +4,6 @@
  * @package Minify
  */
 
-require_once 'Minify/Controller/Base.php';
-
 /**
  * Controller class for serving predetermined groups of minimized sets, selected
  * by PATH_INFO
@@ -34,12 +32,11 @@ class Minify_Controller_Groups extends Minify_Controller_Base {
      * Set up groups of files as sources
      * 
      * @param array $options controller and Minify options
-     * @return array Minify options
-     * 
-     * Controller options:
-     * 
+     *
      * 'groups': (required) array mapping PATH_INFO strings to arrays
-     * of complete file paths. @see Minify_Controller_Groups 
+     * of complete file paths. @see Minify_Controller_Groups
+     *
+     * @return array Minify options
      */
     public function setupSources($options) {
         // strip controller options

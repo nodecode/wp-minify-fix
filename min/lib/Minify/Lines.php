@@ -40,16 +40,26 @@ class Minify_Lines {
             ? $options['id']
             : '';
         $content = str_replace("\r\n", "\n", $content);
+
+        // Hackily rewrite strings with XPath expressions that are
+        // likely to throw off our dumb parser (for Prototype 1.6.1).
+        $content = str_replace('"/*"', '"/"+"*"', $content);
+        $content = preg_replace('@([\'"])(\\.?//?)\\*@', '$1$2$1+$1*', $content);
+
         $lines = explode("\n", $content);
         $numLines = count($lines);
         // determine left padding
-        $padTo = strlen($numLines);
+        $padTo = strlen((string) $numLines); // e.g. 103 lines = 3 digits
         $inComment = false;
         $i = 0;
         $newLines = array();
         while (null !== ($line = array_shift($lines))) {
             if (('' !== $id) && (0 == $i % 50)) {
-                array_push($newLines, '', "/* {$id} */", '');
+                if ($inComment) {
+                    array_push($newLines, '', "/* {$id} *|", '');
+                } else {
+                    array_push($newLines, '', "/* {$id} */", '');
+                }
             }
             ++$i;
             $newLines[] = self::_addNote($line, $i, $inComment, $padTo);
@@ -59,7 +69,6 @@ class Minify_Lines {
         
         // check for desired URI rewriting
         if (isset($options['currentDir'])) {
-            require_once 'Minify/CSS/UriRewriter.php';
             Minify_CSS_UriRewriter::$debugText = '';
             $content = Minify_CSS_UriRewriter::rewrite(
                  $content
@@ -82,11 +91,14 @@ class Minify_Lines {
      * 
      * @param bool $inComment was the parser in a comment at the
      * beginning of the line?
-     * 
+     *
      * @return bool
      */
     private static function _eolInComment($line, $inComment)
     {
+        // crude way to avoid things like // */
+        $line = preg_replace('~//.*?(\\*/|/\\*).*~', '', $line);
+
         while (strlen($line)) {
             $search = $inComment
                 ? '*/'

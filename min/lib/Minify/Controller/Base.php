@@ -27,7 +27,7 @@ abstract class Minify_Controller_Base {
      * 
      * @param array $options controller and Minify options
      * 
-     * return array $options Minify::serve options
+     * @return array $options Minify::serve options
      */
     abstract public function setupSources($options);
     
@@ -52,9 +52,10 @@ abstract class Minify_Controller_Base {
             ,'quiet' => false // serve() will send headers and output
             ,'debug' => false
             
-            // if you override this, the response code MUST be directly after 
+            // if you override these, the response codes MUST be directly after
             // the first space.
             ,'badRequestHeader' => 'HTTP/1.0 400 Bad Request'
+            ,'errorHeader'      => 'HTTP/1.0 500 Internal Server Error'
             
             // callback function to see/modify content of all sources
             ,'postprocessor' => null
@@ -78,33 +79,6 @@ abstract class Minify_Controller_Base {
     }
     
     /**
-     * Load any code necessary to execute the given minifier callback.
-     * 
-     * The controller is responsible for loading minification code on demand
-     * via this method. This built-in function will only load classes for
-     * static method callbacks where the class isn't already defined. It uses
-     * the PEAR convention, so, given array('Jimmy_Minifier', 'minCss'), this 
-     * function will include 'Jimmy/Minifier.php'.
-     * 
-     * If you need code loaded on demand and this doesn't suit you, you'll need
-     * to override this function in your subclass. 
-     * @see Minify_Controller_Page::loadMinifier()
-     * 
-     * @param callback $minifierCallback callback of minifier function
-     * 
-     * @return null
-     */
-    public function loadMinifier($minifierCallback)
-    {
-        if (is_array($minifierCallback)
-            && is_string($minifierCallback[0])
-            && !class_exists($minifierCallback[0], false)) {
-            
-            require str_replace('_', '/', $minifierCallback[0]) . '.php';
-        }
-    }
-    
-    /**
      * Is a user-given file within an allowable directory, existing,
      * and having an extension js/css/html/txt ?
      * 
@@ -117,6 +91,8 @@ abstract class Minify_Controller_Base {
      * be in subdirectories of these directories.
      * 
      * @return bool file is safe
+     *
+     * @deprecated use checkAllowDirs, checkNotHidden instead
      */
     public static function _fileIsSafe($file, $safeDirs)
     {
@@ -134,15 +110,58 @@ abstract class Minify_Controller_Base {
         list($revExt) = explode('.', strrev($base));
         return in_array(strrev($revExt), array('js', 'css', 'html', 'txt'));
     }
-    
+
     /**
-     * @var array instances of Minify_Source, which provide content and
-     * any individual minification needs.
+     * @param string $file
+     * @param array $allowDirs
+     * @param string $uri
+     * @return bool
+     * @throws Exception
+     */
+    public static function checkAllowDirs($file, $allowDirs, $uri)
+    {
+        foreach ((array)$allowDirs as $allowDir) {
+            if (strpos($file, $allowDir) === 0) {
+                return true;
+            }
+        }
+        throw new Exception("File '$file' is outside \$allowDirs. If the path is"
+            . " resolved via an alias/symlink, look into the \$min_symlinks option."
+            . " E.g. \$min_symlinks['/" . dirname($uri) . "'] = '" . dirname($file) . "';");
+    }
+
+    /**
+     * @param string $file
+     * @throws Exception
+     */
+    public static function checkNotHidden($file)
+    {
+        $b = basename($file);
+        if (0 === strpos($b, '.')) {
+            throw new Exception("Filename '$b' starts with period (may be hidden)");
+        }
+    }
+
+    /**
+     * instances of Minify_Source, which provide content and any individual minification needs.
+     *
+     * @var array
      * 
      * @see Minify_Source
      */
     public $sources = array();
     
+    /**
+     * Short name to place inside cache id
+     *
+     * The setupSources() method may choose to set this, making it easier to
+     * recognize a particular set of sources/settings in the cache folder. It
+     * will be filtered and truncated to make the final cache id <= 250 bytes.
+     * 
+     * @var string
+     */
+    public $selectionId = '';
+
     /**
      * Mix in default controller options with user-given options
      * 
@@ -192,11 +211,12 @@ abstract class Minify_Controller_Base {
 
     /**
      * Send message to the Minify logger
+     *
      * @param string $msg
+     *
      * @return null
      */
-    protected function log($msg) {
-        require_once 'Minify/Logger.php';
+    public function log($msg) {
         Minify_Logger::log($msg);
     }
 }
