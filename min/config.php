@@ -49,7 +49,6 @@ $min_enableBuilder = false;
 //$min_cachePath = '/tmp';
 //$min_cachePath = preg_replace('/^\\d+;/', '', session_save_path());
 //###WPM-CACHE-PATH-BEFORE###
-$min_cachePath = '/Users/benutzer/localhost2/nodecode/wp-content/plugins/wp-minify-fix/cache/';
 //###WPM-CACHE-PATH-AFTER###
 
 /**
@@ -82,7 +81,7 @@ $min_cacheFileLocking = true;
  * move all @imports to the top of the output. Note that moving @imports could 
  * affect CSS values (which is why this option is disabled by default).
  */
-$min_serveOptions['bubbleCssImports'] = false;
+$min_serveOptions['bubbleCssImports'] = true;
 
 
 /**
@@ -96,7 +95,6 @@ $min_serveOptions['bubbleCssImports'] = false;
  */
 $min_serveOptions['maxAge'] = 1800;
 //###WPM-CACHE-AGE-BEFORE###
-$min_serveOptions['maxAge'] = 2592000;
 //###WPM-CACHE-AGE-AFTER###
 
 /**
