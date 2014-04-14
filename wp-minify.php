@@ -3,7 +3,7 @@
 Plugin Name: WP Minify Fix
 Plugin URI: http://wordpress.org/plugins/wp-minify-fixed/
 Description: [Fixed] This plugin uses the Minify engine to combine and compress JS and CSS files to improve page load time.
-Version: 1.3.3
+Version: 1.3.4
 Author: NodeCode
 Author URI: http://nodecode.de
 */
@@ -34,7 +34,7 @@ class WPMinify {
   var $name_dashed = 'wp-minify-fix'; 
   var $name_proper = 'WP Minify Fix'; 
   var $required_wp_version = '2.7';
-  var $version = '1.3.3';
+  var $version = '1.3.4';
 
   var $c = null;
   var $debug = false;
@@ -517,7 +517,7 @@ class WPMinify {
   function local_version($url) {
     $site_url = trailingslashit(get_option('siteurl'));
     $url = str_replace($site_url, '', $url); // relative paths only for local urls
-    $url = preg_replace('/^\//', '', $url); // strip front / if any
+    //$url = preg_replace('/^\//', '', $url); // strip front / if any
     $url = preg_replace('/\?.*/i', '', $url); // throws away parameters, if any
     return $url;
   }
@@ -527,7 +527,7 @@ class WPMinify {
       $url = $this->local_version($url);
     }
 
-    if (substr($url, 0, 4) != 'http'
+    if (substr($url, 0, 4) != 'http' && substr($url, 0, 2) != '//'
       && (substr($url, -3, 3) == '.js' || substr($url, -4, 4) == '.css')) {
       return false;
     } else {
@@ -784,42 +784,40 @@ class WPMinify {
     preg_match_all('/<script([^>]*?)><\/script>/i', $content, $script_tags_match);
 
     foreach ($script_tags_match[0] as $script_tag) {
-      if (strpos(strtolower($script_tag), 'text/javascript') !== false) {
-        preg_match('/src=[\'"]([^\'"]+)/', $script_tag, $src_match);
-        if ($src_match[1]) {
-          // include it if it is in the include list
-          $include = false;
-          $inclusions = $wpm_options['js_include'];
-          foreach ($inclusions as $include_pat) {
-            $include_pat = trim($include_pat);
-            if (strlen($include_pat) > 0 && strpos($src_match[1], $include_pat) !== false) {
-              $include = true;
+      preg_match('/src=[\'"]([^\'"]+)/', $script_tag, $src_match);
+      if ($src_match[1]) {
+        // include it if it is in the include list
+        $include = false;
+        $inclusions = $wpm_options['js_include'];
+        foreach ($inclusions as $include_pat) {
+          $include_pat = trim($include_pat);
+          if (strlen($include_pat) > 0 && strpos($src_match[1], $include_pat) !== false) {
+            $include = true;
+            break;
+          }
+        }
+
+        if (!$include) {
+          // support external files?
+          if (!$wpm_options['cache_external'] && $this->is_external($src_match[1])) {
+            continue; // skip if we don't cache externals and this file is external
+          }
+
+          // do not include anything in excluded list
+          $skip = false;
+          $exclusions = array_merge($this->default_exclude, $wpm_options['js_exclude']);
+          foreach ($exclusions as $exclude_pat) {
+            $exclude_pat = trim($exclude_pat);
+            if (strlen($exclude_pat) > 0 && strpos($src_match[1], $exclude_pat) !== false) {
+              $skip = true;
               break;
             }
           }
-
-          if (!$include) {
-            // support external files?
-            if (!$wpm_options['cache_external'] && $this->is_external($src_match[1])) {
-              continue; // skip if we don't cache externals and this file is external
-            }
-
-            // do not include anything in excluded list
-            $skip = false;
-            $exclusions = array_merge($this->default_exclude, $wpm_options['js_exclude']);
-            foreach ($exclusions as $exclude_pat) {
-              $exclude_pat = trim($exclude_pat);
-              if (strlen($exclude_pat) > 0 && strpos($src_match[1], $exclude_pat) !== false) {
-                $skip = true;
-                break;
-              }
-            }
-            if ($skip) continue;
-          }
-
-          $content = str_replace($script_tag, '', $content);
-          $js_locations[] = $this->get_js_location($src_match[1]);
+          if ($skip) continue;
         }
+
+        $content = str_replace($script_tag, '', $content);
+        $js_locations[] = $this->get_js_location($src_match[1]);
       }
     }
 

@@ -3,7 +3,7 @@ Tags: minify, js, css, html, javascript, cascading style sheets, optimize, perfo
 Contributors: NodeCode, madeinthayaland
 Requires at least: 2.7
 Tested up to: 3.8.1
-Stable Tag: 1.3.3
+Stable Tag: 1.3.4
 
 [Fixed] This plugin uses the Minify engine to combine and compress JS and CSS files
 to improve page load time.
@@ -21,6 +21,8 @@ JS and CSS files to improve page load time.
 * cache interval option fixed
 * move CSS-@imports to the top of the output
 * bottom CSS- and JavaScript output fixed
+* support for script-tags without `type="text/javascript"`
+* detection of protocol-relative URLs as external file (e.g. Google AdSense)
 
 = How Does it Work? =
 
@@ -44,6 +46,10 @@ WordPress header.
 * Plugin hooks!
 
 == Changelog ==
+= 1.3.4 =
+* support for script-tags without `type="text/javascript"`
+* detection of protocol-relative URLs as external file (e.g. Google AdSense)
+
 = 1.3.3 =
 * bottom CSS- and JavaScript output fixed 
 
