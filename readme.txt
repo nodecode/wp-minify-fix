@@ -3,13 +3,13 @@ Tags: minify, js, css, html, javascript, cascading style sheets, optimize, perfo
 Contributors: NodeCode, madeinthayaland
 Requires at least: 2.7
 Tested up to: 3.8.1
-Stable Tag: 1.3.4
+Stable Tag: 1.4.0
 
 [Fixed] This plugin uses the Minify engine to combine and compress JS and CSS files
 to improve page load time.
 
 == Description ==
-This plugin is a fork of [WP Minify](http://wordpress.org/plugins/wp-minify/) to fix bugs, because it has not been updated since 2012-6-4.
+This plugin is a fork of [WP Minify](http://wordpress.org/plugins/wp-minify/) to fix bugs and add features, because it has not been updated since 2012-6-4.
 
 This plugin integrates the [Minify engine](http://code.google.com/p/minify/)
 into your WordPress blog.  Once enabled, this plugin will combine and compress
@@ -17,12 +17,14 @@ JS and CSS files to improve page load time.
 
 = What has been fixed? =
 
-* Minify engine 2.1.7 updated
-* cache interval option fixed
-* move CSS-@imports to the top of the output
-* bottom CSS- and JavaScript output fixed
-* support for script-tags without `type="text/javascript"`
-* detection of protocol-relative URLs as external file (e.g. Google AdSense)
+* Minify engine updated to version 2.1.7
+* Cache interval option has been fixed
+* Move CSS-@imports to the top of the output
+* Bottom CSS- and JavaScript output fixed
+* Support for script tags without `type="text/javascript"`
+* Detection of protocol-relative URLs as external file (e.g. Google AdSense)
+* New option for the HTML5 async attribute
+* A separate JavaScript file in the footer is now possible
 
 = How Does it Work? =
 
@@ -46,22 +48,29 @@ WordPress header.
 * Plugin hooks!
 
 == Changelog ==
+= 1.4.0 =
+* Added option for the HTML5 async attribute
+* Added option for a separate JavaScript file in the footer
+* Tabs are used instead of spaces in the PHP code
+* Bugfixes
+* Small changes
+
 = 1.3.4 =
-* support for script-tags without `type="text/javascript"`
-* detection of protocol-relative URLs as external file (e.g. Google AdSense)
+* Support for script-tags without `type="text/javascript"`
+* Detection of protocol-relative URLs as external file (e.g. Google AdSense)
 
 = 1.3.3 =
-* bottom CSS- and JavaScript output fixed 
+* Bottom CSS- and JavaScript output fixed 
 
 = 1.3.2 =
-* move CSS-@imports to the top of the output
+* Move CSS-@imports to the top of the output
 
 = 1.3.1 =
 * Minify engine 2.1.7 updated
 
 = 1.3.0 =
 * WP Minify Fix released
-* cache interval fixed
+* Cache interval fixed
 
 = 1.2.0 =
 * Tested with 3.3.2
