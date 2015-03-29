@@ -881,7 +881,8 @@ class WPMinify {
 				}
 			}
 	
-			$js_locations_footer = array_unique($js_locations_footer);
+			if ($js_locations_footer != NULL)
+				$js_locations_footer = array_unique($js_locations_footer);
 		}
 
 		return array($content, $js_locations, $js_locations_footer);
