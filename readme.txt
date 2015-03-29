@@ -48,6 +48,10 @@ WordPress header.
 * Plugin hooks!
 
 == Changelog ==
+= 1.4.1 =
+* Duplicate footer scripts bug fixed
+* PHP warning message in some scenarios cleared
+
 = 1.4.0 =
 * Added option for the HTML5 async attribute
 * Added option for a separate JavaScript file in the footer
