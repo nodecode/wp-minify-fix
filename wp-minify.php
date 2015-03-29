@@ -894,6 +894,7 @@ class WPMinify {
 			$js_tags = '';
 			$minify_urls = $this->build_minify_urls($js_locations, '.js');
 			if ($js_locations_footer) {
+				$js_tags_footer = '';
 				$minify_urls_footer = $this->build_minify_urls($js_locations_footer, '.js');
 			}
 			
@@ -925,22 +926,22 @@ class WPMinify {
 			if ($js_locations_footer) {
 				foreach ($minify_urls_footer as $minify_url) {
 					$minify_url = apply_filters('wp_minify_js_url', $minify_url); // Allow plugins to modify final minify URL
-					$js_tags .= "<script type='text/javascript' src='$minify_url'></script>";
+					$js_tags_footer .= "<script type='text/javascript' src='$minify_url'></script>";
 				}
 	
 				$matches = preg_match('/<!-- WP-Minify JS Footer -->/', $content);
 	
 				if ($matches) {
-					$content = preg_replace('/<!-- WP-Minify JS Footer -->/', "$js_tags", $content, 1); // limit 1 replacement
+					$content = preg_replace('/<!-- WP-Minify JS Footer -->/', "$js_tags_footer", $content, 1); // limit 1 replacement
 				} else {
-					$content = preg_replace('/<!-- WP-Minify Footer Placeholder -->/', "$js_tags", $content, 1); // limit 1 replacement
+					$content = preg_replace('/<!-- WP-Minify Footer Placeholder -->/', "$js_tags_footer", $content, 1); // limit 1 replacement
 					$placeholderRemoved = true;
 				}
 			}
 			
-			// If necessary, remove placeholder comment
+			// If necessary (custom footer position comment), remove placeholder comment
 			if ($placeholderRemoved === false) {
-				$content = preg_replace('/<!-- WP-Minify Footer Placeholder -->/', "$js_tags", $content, 1); // limit 1 replacement
+				$content = preg_replace('/<!-- WP-Minify Footer Placeholder -->/', "", $content, 1); // limit 1 replacement
 			}
 		}
 		return $content;
