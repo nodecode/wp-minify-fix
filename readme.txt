@@ -1,9 +1,9 @@
 === WP Minify Fix ===
-Tags: minify, js, css, html, javascript, cascading style sheets, optimize, performance, speed, http request, phpspeedy, fix, compress, performance, import
+Tags: minify, js, css, html, javascript, cascading style sheets, optimize, performance, performance optimization, optimize, optimizer, speed, http request, phpspeedy, fix, compress, performance, import, cache, combine, bundle, plugin, google page speed, nginx
 Contributors: NodeCode, madeinthayaland
 Requires at least: 2.7
-Tested up to: 4.1
-Stable Tag: 1.4.0
+Tested up to: 4.1.1
+Stable Tag: 1.4.1
 
 [Fixed] This plugin uses the Minify engine to combine and compress JS and CSS files
 to improve page load time.
