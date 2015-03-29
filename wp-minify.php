@@ -34,7 +34,7 @@ class WPMinify {
 	var $name_dashed = 'wp-minify-fix'; 
 	var $name_proper = 'WP Minify Fix'; 
 	var $required_wp_version = '2.7';
-	var $version = '1.4.0';
+	var $version = '1.4.1';
 
 	var $c = null;
 	var $debug = false;
