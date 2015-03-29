@@ -3,13 +3,13 @@
 Plugin Name: WP Minify Fix
 Plugin URI: http://wordpress.org/plugins/wp-minify-fixed/
 Description: [Fixed] This plugin uses the Minify engine to combine and compress JS and CSS files to improve page load time.
-Version: 1.4.0
+Version: 1.4.1
 Author: NodeCode
 Author URI: http://nodecode.de
 */
 
 /*
-Copyright 2013 NodeCode (email: info@nodecode.de)
+Copyright 2013-2015 NodeCode (email: info@nodecode.de)
 Copyright 2009-2011 Thaya Kareeson (email: thaya.kareeson@gmail.com)
 
 This program is free software: you can redistribute it and/or modify
