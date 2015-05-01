@@ -147,6 +147,9 @@ class Minify_HTML {
         // use newlines before 1st attribute in open tags (to limit line lengths)
         //$this->_html = preg_replace('/(<[a-z\\-]+)\\s+([^>]+>)/i', "$1\n$2", $this->_html);
         
+        // remove newlines
+        $this->_html = str_replace("\n", ' ', $this->_html);
+        
         // fill placeholders
         $this->_html = str_replace(
             array_keys($this->_placeholders)
