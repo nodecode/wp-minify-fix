@@ -50,7 +50,8 @@ WordPress header.
 == Changelog ==
 = 1.4.1 =
 * Duplicate footer scripts bug fixed
-* PHP warning message in some scenarios cleared
+* PHP warning message in some scenarios fixed
+* Newlines before 1st attribute in open tags removed
 
 = 1.4.0 =
 * Added option for the HTML5 async attribute
