@@ -38,7 +38,7 @@ class WPMinify {
 
 	var $c = null;
 	var $debug = false;
-	var $cache_location = 'wp-content/plugins/wp-minify-fix/cache/';
+	var $cache_location = 'wp-content/cache/wp-minify-fix/';
 	var $url_len_limit = 2000;
 	var $minify_limit = 50;
 	var $buffer_started = false;
@@ -264,7 +264,7 @@ class WPMinify {
 		}
 
 		// only check these on plugin settings page
-		$this->c->a_check_dir_writable($this->c->get_plugin_dir().'cache/', array($this, 'a_notify_cache_not_writable'));
+		$this->c->a_check_dir_writable($this->c->get_wp_content_dir().'cache/', array($this, 'a_notify_cache_not_writable'));
 		$this->c->a_check_orphan_options(array($this, 'a_notify_orphan_options'));
 		if ($this->c->a_check_dir_writable($this->c->get_plugin_dir().'min/config.php', array($this, 'a_notify_config_not_writable'))) {
 			$this->a_check_minify_config();
@@ -283,7 +283,7 @@ class WPMinify {
 		if (!preg_match('/\$min_cachePath.*?/', $cache_path_code)) {
 			$content = preg_replace(
 				'/\/\/###WPM-CACHE-PATH-BEFORE###(.*)\/\/###WPM-CACHE-PATH-AFTER###/s',
-				"//###WPM-CACHE-PATH-BEFORE###\n".'$min_cachePath = \''.$this->c->get_plugin_dir()."cache/';\n//###WPM-CACHE-PATH-AFTER###",
+				"//###WPM-CACHE-PATH-BEFORE###\n".'$min_cachePath = \''.$this->c->get_wp_content_dir()."cache/';\n//###WPM-CACHE-PATH-AFTER###",
 				$content);
 			$config_modified = true;
 		}
@@ -341,7 +341,7 @@ class WPMinify {
 		$this->c->a_notify(
 			sprintf('%s: %s',
 				__('Cache directory is not writable. Please grant your server write permissions to the directory', $this->name),
-				$this->c->get_plugin_dir().'cache/'),
+				$this->c->get_wp_content_dir().'cache/'),
 			true);
 	}
 
@@ -502,7 +502,7 @@ class WPMinify {
 	}
 
 	function fetch_content($url, $type = '') {
-		$cache_file = $this->c->get_plugin_dir().'cache/'.md5($url).$type;
+		$cache_file = $this->c->get_wp_content_dir().'cache/'.md5($url).$type;
 		$content = '';
 		if (file_exists($cache_file)) {
 			// check cache expiration
@@ -617,7 +617,7 @@ class WPMinify {
 		$wpm_options = get_option($this->name);
 		$cached_urls = array();
 		foreach ($urls as $url) {
-			$cache_file = $this->c->get_plugin_dir().'cache/'.md5($url).$type;
+			$cache_file = $this->c->get_wp_content_dir().'cache/'.md5($url).$type;
 			if (file_exists($cache_file)) {
 				// check cache expiration
 				$this->refetch_cache_if_expired($url, $cache_file);
