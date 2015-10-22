@@ -602,6 +602,15 @@ class WPMinify {
 		if ($wpm_options['force_https'] && $_SERVER["HTTPS"] == "on") {
 			$minify_url = preg_replace('/^http:\/\//', 'https://', $minify_url);
 		}
+		// Add site path to locations, if WordPress is installed in an subdirectory
+		$sitePath = parse_url(get_site_url())['path'];
+		$sitePath = ltrim($sitePath, '/');
+		if ($sitePath) {
+			foreach ($locations as &$location) {
+				$location = $sitePath. $location;
+			}
+		}
+		
 		$minify_url .= implode(',', $locations);
 		$latest_modified = $this->get_latest_modified_time($locations);
 		$minify_urls = $this->check_and_split_url($minify_url, $latest_modified);
