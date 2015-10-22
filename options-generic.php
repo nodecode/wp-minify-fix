@@ -114,9 +114,9 @@ jQuery(document).ready(function($){
 		
 		printf('
 			<h2 class="wpm_advanced" '.$advanced_style.'>%s</h2>
-			<p><label>%s<br/><textarea name="wpm_options_update[js_exclude]" style="width:600px" rows="5">'.attribute_escape(implode(chr(10), $wpm_options['js_exclude'])).'</textarea></label></p>
-			<p><label>%s<br/><textarea name="wpm_options_update[css_exclude]" style="width:600px" rows="5">'.attribute_escape(implode(chr(10), $wpm_options['css_exclude'])).'</textarea></label></p>
-			<p class="wpm_advanced" '.$advanced_style.'><label>%s<br/><textarea name="wpm_options_update[uri_exclude]" style="width:600px" rows="5">'.attribute_escape(implode(chr(10), $wpm_options['uri_exclude'])).'</textarea></label></p>
+			<p><label>%s<br/><textarea name="wpm_options_update[js_exclude]" style="width:600px" rows="5">'.esc_attr(implode(chr(10), $wpm_options['js_exclude'])).'</textarea></label></p>
+			<p><label>%s<br/><textarea name="wpm_options_update[css_exclude]" style="width:600px" rows="5">'.esc_attr(implode(chr(10), $wpm_options['css_exclude'])).'</textarea></label></p>
+			<p class="wpm_advanced" '.$advanced_style.'><label>%s<br/><textarea name="wpm_options_update[uri_exclude]" style="width:600px" rows="5">'.esc_attr(implode(chr(10), $wpm_options['uri_exclude'])).'</textarea></label></p>
 			',
 			__('Local Files Minification', $this->name),
 			__('JavaScript files to exclude from minify (line delimited).', $this->name),
@@ -127,8 +127,8 @@ jQuery(document).ready(function($){
 		printf('
 			<h2 class="wpm_advanced" '.$advanced_style.'>%s</h2>
 			<p class="wpm_advanced" '.$advanced_style.'><label>%s &nbsp; <input name="wpm_options_update[cache_external]" id="cache_external_checkbox" state="'.$include_toggle_state.'" type="checkbox" '.checked(true, $wpm_options['cache_external'], false).'/> &nbsp; (%s)</label></p>
-			<p class="wpm_advanced wpm_include" '.$advanced_style.' '.$include_style.'><label>%s (%s, <a href="http://omninoggin.com/wordpress-posts/tutorial-wp-minify-options/#include_external_files">%s</a>)<br/><textarea name="wpm_options_update[js_include]" style="width:600px" rows="5">'.attribute_escape(implode(chr(10), $wpm_options['js_include'])).'</textarea></label></p>
-			<p class="wpm_advanced wpm_include" '.$advanced_style.' '.$include_style.'><label>%s (%s, <a href="http://omninoggin.com/wordpress-posts/tutorial-wp-minify-options/#include_external_files">%s</a>)<br/><textarea name="wpm_options_update[css_include]" style="width:600px" rows="5">'.attribute_escape(implode(chr(10), $wpm_options['css_include'])).'</textarea></label></p>
+			<p class="wpm_advanced wpm_include" '.$advanced_style.' '.$include_style.'><label>%s (%s, <a href="http://omninoggin.com/wordpress-posts/tutorial-wp-minify-options/#include_external_files">%s</a>)<br/><textarea name="wpm_options_update[js_include]" style="width:600px" rows="5">'.esc_attr(implode(chr(10), $wpm_options['js_include'])).'</textarea></label></p>
+			<p class="wpm_advanced wpm_include" '.$advanced_style.' '.$include_style.'><label>%s (%s, <a href="http://omninoggin.com/wordpress-posts/tutorial-wp-minify-options/#include_external_files">%s</a>)<br/><textarea name="wpm_options_update[css_include]" style="width:600px" rows="5">'.esc_attr(implode(chr(10), $wpm_options['css_include'])).'</textarea></label></p>
 			',
 			__('Non-Local Files Minification', $this->name),
 			__('Enable minification on external files', $this->name),
@@ -143,7 +143,7 @@ jQuery(document).ready(function($){
 
 		printf('
 			<h2 class="wpm_advanced" '.$advanced_style.'>%s</h2>
-			<p class="wpm_advanced" '.$advanced_style.'><label>%s<input name="wpm_options_update[cache_interval]" type="text" size="4" value="'.attribute_escape($wpm_options['cache_interval']).'"/>%s <span class="submit"><input type="submit" name="wpm_options_clear_cache_submit" value="%s"/></span></p></label>
+			<p class="wpm_advanced" '.$advanced_style.'><label>%s<input name="wpm_options_update[cache_interval]" type="text" size="4" value="'.esc_attr($wpm_options['cache_interval']).'"/>%s <span class="submit"><input type="submit" name="wpm_options_clear_cache_submit" value="%s"/></span></p></label>
 			',
 			__('Caching', $this->name),
 			__('Cache expires after every', $this->name),
@@ -187,7 +187,7 @@ jQuery(document).ready(function($){
 
 		printf('
 			<p class="wpm_advanced" '.$advanced_style.'><label>%s &nbsp; <input name="wpm_options_update[auto_base]" type="checkbox" '.checked(true, $wpm_options['auto_base'], false).'/></label></p>
-			<p class="wpm_advanced" '.$advanced_style.'><label>%s<br/><input name="wpm_options_update[extra_minify_options]" type="text" size="100" value="'.attribute_escape($wpm_options['extra_minify_options']).'"/><br/><em>%s</em></label></p>
+			<p class="wpm_advanced" '.$advanced_style.'><label>%s<br/><input name="wpm_options_update[extra_minify_options]" type="text" size="100" value="'.esc_attr($wpm_options['extra_minify_options']).'"/><br/><em>%s</em></label></p>
 			',
 			__('Automatically set your Minify base per siteurl setting (recommended)', $this->name),
 			__('Extra arguments to pass to minify engine. This value will get append to calls to URL "wp-minify-fix/min/?f=file1.js,file2.js,...,fileN.js".', $this->name),
