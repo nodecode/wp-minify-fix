@@ -603,11 +603,11 @@ class WPMinify {
 			$minify_url = preg_replace('/^http:\/\//', 'https://', $minify_url);
 		}
 		// Add site path to locations, if WordPress is installed in an subdirectory
-		$sitePath = parse_url(get_site_url())['path'];
+		$sitePath = parse_url(site_url())['path'];
 		$sitePath = ltrim($sitePath, '/');
 		if ($sitePath) {
 			foreach ($locations as &$location) {
-				$location = $sitePath. $location;
+				$location = $sitePath. '/'. $location;
 			}
 		}
 		
