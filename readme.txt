@@ -47,6 +47,8 @@ WordPress header.
 * Detection and elimination of duplicate sources.
 * Plugin hooks!
 
+You can also commit changes on our [Github repository](https://github.com/nodecode/wp-minify-fix).
+
 == Changelog ==
 = 1.4.1 =
 * Duplicate footer scripts bug fixed
