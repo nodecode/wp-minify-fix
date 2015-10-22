@@ -473,7 +473,7 @@ class WPMinify {
 
 			// append &debug if we need to
 			if ($wpm_options['debug_nominify']) {
-				$debug_string = '&amp;debug=true';
+				$debug_string = '&debug=true';
 			} else {
 				$debug_string = '';
 			}
@@ -481,7 +481,7 @@ class WPMinify {
 			// append base directory if needed
 			$base = $this->get_base();
 			if ($base != '') {
-				$base_string = '&amp;b='.$base;
+				$base_string = '&b='.$base;
 			} else {
 				$base_string = '';
 			}
@@ -489,13 +489,13 @@ class WPMinify {
 			// get rid of any base directory specification in extra options
 			$extra_minify_options = preg_replace('/(&|&amp;|\b)b=[^&]*/', '', trim($wpm_options['extra_minify_options']));
 			if (trim($extra_minify_options) != '') {
-				$extra_string = '&amp;'.$extra_minify_options;
+				$extra_string = '&'.$extra_minify_options;
 			} else {
 				$extra_string = '';
 			}
 
 			// append last modified time
-			$latest_modified_string = '&amp;m='.$latest_modified;
+			$latest_modified_string = '&m='.$latest_modified;
 
 			return array($base_url . '?f=' . implode(',', $files) . $debug_string . $base_string . $extra_string . $latest_modified_string);
 		}
@@ -602,15 +602,6 @@ class WPMinify {
 		if ($wpm_options['force_https'] && $_SERVER["HTTPS"] == "on") {
 			$minify_url = preg_replace('/^http:\/\//', 'https://', $minify_url);
 		}
-		// Add site path to locations, if WordPress is installed in an subdirectory
-		$sitePath = parse_url(site_url())['path'];
-		$sitePath = ltrim($sitePath, '/');
-		if ($sitePath) {
-			foreach ($locations as &$location) {
-				$location = $sitePath. '/'. $location;
-			}
-		}
-		
 		$minify_url .= implode(',', $locations);
 		$latest_modified = $this->get_latest_modified_time($locations);
 		$minify_urls = $this->check_and_split_url($minify_url, $latest_modified);
