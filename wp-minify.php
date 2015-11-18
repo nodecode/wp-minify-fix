@@ -889,7 +889,7 @@ class WPMinify {
 	}
 
 	function inject_js($content, $js_locations, $js_locations_footer) {
-		if (count($js_locations) > 0) {
+		if (count($js_locations) > 0 || count($js_locations_footer) > 0) {
 			$wpm_options = get_option($this->name);
 			// build minify URLS
 			$js_tags = '';
