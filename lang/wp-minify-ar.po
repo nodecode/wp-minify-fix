@@ -1,0 +1,333 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Minify Fix\n"
+"POT-Creation-Date: 2015-12-23 13:01+0000\n"
+"PO-Revision-Date: 2015-12-23 14:17+0000\n"
+"Last-Translator: Sidati MESSAITI <contact@sidati.com>\n"
+"Language-Team: Sidati MESSAITI <sidati@outlook.com>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: wp-minify.php\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Bookmarks: -1,-1,-1,-1,-1,64,-1,-1,-1,-1\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: common.php:77
+#, php-format
+msgid "You are using WordPress version %s."
+msgstr "أنت تستعمل نسخة الووردبريس %s."
+
+#: common.php:78
+#, php-format
+msgid "%s recommends that you use WordPress %s or newer."
+msgstr "%s ينصح باستخدام إصدار الووردبريس رقم %s أو أحدث."
+
+#: common.php:81
+#, php-format
+msgid "%sPlease update!%s"
+msgstr "%sرجاء قم بالتحديث!%s"
+
+#: common.php:88
+#, php-format
+msgid "%s options has been updated."
+msgstr "تم تحديث إعدادات %s."
+
+#: common.php:94
+#, php-format
+msgid "%s options has been upgraded."
+msgstr "تم تحديث إعدادات %s."
+
+#: common.php:100
+#, php-format
+msgid "%s options has been reset."
+msgstr "تم تصفير إعدادات %s."
+
+#: common.php:106
+#, php-format
+msgid "%s cache has been cleared."
+msgstr "تم نظيف النسخة المخزنة لـ %s."
+
+#: common.php:112
+#, php-format
+msgid "%s options imported."
+msgstr "تم استيراد إعدادات %s"
+
+#: common.php:118
+#, php-format
+msgid "%s options import failed!"
+msgstr "لقد فشل استيراد إعدادات %s"
+
+#: common.php:124
+#, php-format
+msgid "Did not receive any file to be imported. %s options import failed!"
+msgstr "لم يتم استقبال أي ملف ليتم استيراده، لذلك فشل استيراد إعدادات %s!"
+
+#: common.php:130
+#, php-format
+msgid "Found syntax errors in file being imported. %s options import failed!"
+msgstr "تم العثور على أخطاء في الملف المستورد، لذلك فشل استيراد إعدادات %s!"
+
+#: options-generic.php:3
+msgid ""
+"All of options will return to default settings.\t Are you sure you want to "
+"reset all settings?"
+msgstr ""
+"سيتم إرجاع القيم البدئية لجميع الإعدادات، هل أنت متأكد من هذه العملية ؟"
+
+#: options-generic.php:18 options-generic.php:71
+msgid "Show Advanced Options"
+msgstr "إظهار الخيارات المتقدمة"
+
+#: options-generic.php:35 options-generic.php:66
+msgid "Hide Advanced Options"
+msgstr "إخفاء الخيارات المتقدمة"
+
+#: options-generic.php:88
+msgid "Support this plugin!"
+msgstr "ادعم هذه الإضافة!"
+
+#: options-generic.php:89
+msgid "Display \"Page optimized by WP Minify\" link in the footer"
+msgstr "إظهار رابط \"هذه الصفحة تستخدم WP Minify\" أسفل صفحات الموقع"
+
+#: options-generic.php:90
+msgid "Do not display \"Page optimized by WP Minify\" link."
+msgstr "إخفاء رابط \"هذه الصفحة تستخدم WP Minify\"."
+
+#: options-generic.php:99 wp-minify.php:382
+msgid "General Configuration"
+msgstr "إعدادات عامة"
+
+#: options-generic.php:100
+msgid "Enable JavaScript Minification"
+msgstr "تفعيل ضغط الـ JavaScript"
+
+#: options-generic.php:101
+msgid "Enable CSS Minification"
+msgstr "تفعيل ضغط الـ CSS"
+
+#: options-generic.php:102
+msgid "Enable HTML Minification"
+msgstr "تفعيل ضغط الـ HTML"
+
+#: options-generic.php:110
+msgid "Debugging"
+msgstr "تصحيح الأخطاء"
+
+#: options-generic.php:111
+msgid "Combine files but do not minify"
+msgstr "جمع الملفات دون ضغطها"
+
+#: options-generic.php:112
+msgid "Show minify errors through FirePHP"
+msgstr "إظهار أخطاء الضغط عبر FirePHP"
+
+#: options-generic.php:121
+msgid "Local Files Minification"
+msgstr "ضغظ الملفات المحلية"
+
+#: options-generic.php:122
+msgid "JavaScript files to exclude from minify (line delimited)."
+msgstr "ملفات الـ JavaScript المراد استثناءها من الضغط (رابط بكل سطر)."
+
+#: options-generic.php:123
+msgid "CSS files to exclude from minify (line delimited)."
+msgstr "ملفات الـ CSS المراد استثناءها من الضغط (رابط بكل سطر)."
+
+#: options-generic.php:124
+msgid "URIs on which WP-Minify-Fix parsing will be disabled (line delimited)"
+msgstr ""
+"الروابط التي سيتم فيها تعطيل خاصية WP-Minify-Fix Parsing (رابط بكل سطر)"
+
+#: options-generic.php:133
+msgid "Non-Local Files Minification"
+msgstr "ضغط الملفات الغير محلية"
+
+#: options-generic.php:134
+msgid "Enable minification on external files"
+msgstr "تفعيل ضغط الملفات الخارجية"
+
+#: options-generic.php:135
+msgid ""
+"Not recommended unless you want to exclude a bunch of external .js/.css files"
+msgstr "لا يُنصح به إلا إذا كنت تريد استثناء بعض ملفات CSS/JS الخارجية."
+
+#: options-generic.php:136
+msgid "External JavaScript files to include into minify."
+msgstr "ملفات الـ JavaScript الخارجية ليتم إضافتها إلى محرك الضغط."
+
+#: options-generic.php:137 options-generic.php:140
+msgid "Only useful if \"Minification on external files\" is unchecked"
+msgstr "هذا الخيار يعمل فقط إذا كانت"
+
+#: options-generic.php:138 options-generic.php:141 options-generic.php:179
+msgid "more info"
+msgstr "المزيد من المعلومات"
+
+#: options-generic.php:139
+msgid "External CSS files to include into minify."
+msgstr "الملفات الـ CSS الخارجية المراد ضغطها"
+
+#: options-generic.php:148
+msgid "Caching"
+msgstr "التخزين"
+
+#: options-generic.php:149
+msgid "Cache expires after every"
+msgstr "انتهاء عمر النسخة المخزنة بعد"
+
+#: options-generic.php:150
+msgid "seconds"
+msgstr "ثانية"
+
+#: options-generic.php:151
+msgid "Manually Clear Cache"
+msgstr "حذف النسخة المخزنة يدويا"
+
+#: options-generic.php:160
+msgid "JavaScript Placement"
+msgstr "موقع الـ JavaScript"
+
+#: options-generic.php:161
+msgid "In the header, and if necessary also in the footer (recommended)"
+msgstr "في الترويسة، وأيضا في الذيل إذا كان ضروريا (يُنصح به)"
+
+#: options-generic.php:162
+msgid "Everything in the header"
+msgstr "كل شيء في الترويسة (أعلى الصفحة)"
+
+#: options-generic.php:163
+msgid "Everything in the footer"
+msgstr "كل شيء في الذيل (أسفل الصفحة)."
+
+#: options-generic.php:169
+msgid "Tweaking/Tuning"
+msgstr ""
+
+#: options-generic.php:170
+msgid "Use \"pretty\" URL\""
+msgstr "استعمال الرابط \"اللطيف\""
+
+#: options-generic.php:171
+msgid ""
+"i.e. use \"wp-minify-fix/cache/1234abcd.js\" instead of \"wp-minify-fix/min/?"
+"f=file1.js,file2.js,...,fileN.js\""
+msgstr ""
+"مثال: استخدم \"wp-minify-fix/cache/1234abcd.js\" instead of \"wp-minify-fix/"
+"min/?f=file1.js,file2.js,...,fileN.js\""
+
+#: options-generic.php:177
+msgid "Add the HTML5 async tag"
+msgstr "إضافة وسم async الخاص بالـ HTML5"
+
+#: options-generic.php:178
+msgid "Only for the header"
+msgstr "فقط في الترويسة"
+
+#: options-generic.php:185
+msgid "Force all JavaScript/CSS calls to be HTTPS on HTTPS pages"
+msgstr ""
+"فرض الاتصال الآمن لجميع طلبات الـ JavaScript/CSS في الصفحات ذات الاتصال "
+"الآمن HTTPS."
+
+#: options-generic.php:192
+msgid "Automatically set your Minify base per siteurl setting (recommended)"
+msgstr "الرابط الرئيسية لمحرط الضغط Minify، يختلف حسب رابط موقع "
+
+#: options-generic.php:193
+msgid ""
+"Extra arguments to pass to minify engine. This value will get append to "
+"calls to URL \"wp-minify-fix/min/?f=file1.js,file2.js,...,fileN.js\"."
+msgstr ""
+"إعدادات إضافية ليتم تمريرها إلى محرك الضغط، القيمة المدخلة سيتم إضافتها إلى "
+"الرابط \"wp-minify-fix/min/?f=file1.js,file2.js,...,fileN.js\"."
+
+#: options-generic.php:194
+msgid ""
+"e.g. You can specify this value to be b=somepath to specify the base path "
+"for all files passed into Minify."
+msgstr ""
+"مثال: يُمكنك تحديد هذه القيمة عبر (b=عنوان-المجلد) لتحديد العنوان الرئيسي "
+"لجميع الملفات المراد ضغطها."
+
+#: options-generic.php:205
+msgid "Update Options"
+msgstr "تحديث الإعدادات"
+
+#: options-generic.php:206
+msgid "Reset ALL Options"
+msgstr "تصفير جميع الإعدادات"
+
+#: wp-minify.php:343
+msgid ""
+"Cache directory is not writable. Please grant your server write permissions "
+"to the directory"
+msgstr ""
+"مجلد التخزين على الخادم ليس قابل للكتابة، رجاء تأكد من منح الخادم تصريح "
+"الكتابة للمجلد."
+
+#: wp-minify.php:351
+msgid ""
+"Minify Engine config.php is not writable. Please grant your server write "
+"permissions to file"
+msgstr ""
+"ملف إعدادت محرك Minify (config.php) غير قابل للكتابة، تأكد من منح الخادم "
+"تصريح الكتابة للملف."
+
+#: wp-minify.php:358
+msgid "Some option settings are missing (possibly from plugin upgrade)."
+msgstr "بعض الإعدادات مفقودة (يُحتمل بسبب تحديث الإضافة)."
+
+#: wp-minify.php:362
+msgid "Minify Engine config.php was configured automatically."
+msgstr "تم إعداد ملف إعداد محرك الضغط config.php تلقائيا."
+
+#: wp-minify.php:381
+msgid "WP Minify Options"
+msgstr "إعدادات WP Minify"
+
+#: wp-minify.php:383
+msgid "Documentation"
+msgstr "التوثيق"
+
+#: wp-minify.php:431
+msgid "Error: Could not fetch and cache URL"
+msgstr "خطأ: لم يتم تحميل وضغط الرابط."
+
+#: wp-minify.php:432
+msgid "You might need to exclude this file in WP Minify options."
+msgstr "ربما تحتاج إلى استثناء هذا الملف من خلال إعدادات WP Minify."
+
+#. Plugin Name of the plugin/theme
+msgid "WP Minify Fix"
+msgstr "WP Minify Fix"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/wp-minify-fixed/"
+msgstr "http://wordpress.org/plugins/wp-minify-fixed/"
+
+#. Description of the plugin/theme
+msgid ""
+"[Fixed] This plugin uses the Minify engine to combine and compress JS and "
+"CSS files to improve page load time."
+msgstr ""
+"[مُعدّل] هذه الإضافة تستعمل محرك الضغط Minify من أجل تجميع وضغط ملفات JS و CSS "
+"من أجل تحسين وقت تحميل الموقع."
+
+#. Author of the plugin/theme
+msgid "NodeCode"
+msgstr "NodeCode"
+
+#. Author URI of the plugin/theme
+msgid "http://nodecode.de"
+msgstr "http://nodecode.de"
