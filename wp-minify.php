@@ -527,6 +527,9 @@ class WPMinify {
 
 	function local_version($url) {
 		$site_url = trailingslashit(get_option('siteurl'));
+		if (preg_match('#^//#', $url)) {
+			$url = 'http'.(preg_match('#^https://#', $site_url) ? 's:' : ':').$url;
+		}
 		$url = str_replace($site_url, '', $url); // relative paths only for local urls
 		//$url = preg_replace('/^\//', '', $url); // strip front / if any
 		$url = preg_replace('/\?.*/i', '', $url); // throws away parameters, if any
